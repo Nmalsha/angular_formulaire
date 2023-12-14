@@ -1,0 +1,87 @@
+<form (ngSubmit)="onSubmit()" #signupForm="ngForm" novalidate>
+  <div>
+    <label for="firstname">First Name:</label>
+    <input
+      type="text"
+      id="firstname"
+      name="firstname"
+      [(ngModel)]="user.firstname"
+      required
+      minlength="3"
+      maxlength="15"
+      #firstnameInput="ngModel"
+    />
+    <div *ngIf="signupForm.submitted && firstnameInput.invalid">
+      <div *ngIf="firstnameInput.hasError('required')">
+        Le prénom est requis.
+      </div>
+      <div *ngIf="firstnameInput.hasError('minlength')">
+        Le prénom doit comporter au moins 3 caractères.
+      </div>
+      <div *ngIf="firstnameInput.hasError('maxlength')">
+        Le prénom ne doit pas dépasser 15 caractères.
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="lastname">Last Name:</label>
+    <input
+      type="text"
+      id="lastname"
+      name="lastname"
+      [(ngModel)]="user.lastname"
+      required
+      minlength="3"
+      maxlength="15"
+      #lastnameInput="ngModel"
+    />
+    <div *ngIf="signupForm.submitted && lastnameInput.invalid">
+      <div *ngIf="lastnameInput.hasError('required')">
+        Le nom de famille est requis.
+      </div>
+      <div *ngIf="lastnameInput.hasError('minlength')">
+        Le nom de famille doit comporter au moins 3 caractères.
+      </div>
+      <div *ngIf="lastnameInput.hasError('maxlength')">
+        Le nom de famille ne doit pas dépasser 15 caractères.
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      [(ngModel)]="user.email"
+      required
+      email
+      #emailInput="ngModel"
+    />
+    <div *ngIf="signupForm.submitted && emailInput.invalid">
+      <div *ngIf="emailInput.hasError('required')">L'email est requis.</div>
+      <div *ngIf="emailInput.hasError('email')">L'email est invalide.</div>
+    </div>
+  </div>
+
+  <div>
+    <label for="password">Password:</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      [(ngModel)]="user.password"
+      required
+      #passwordInput="ngModel"
+    />
+    <div *ngIf="signupForm.submitted && passwordInput.invalid">
+      <div *ngIf="passwordInput.hasError('required')">
+        Le mot de passe est requis.
+      </div>
+    </div>
+  </div>
+
+  <button type="submit">Inscription</button>
+</form>
