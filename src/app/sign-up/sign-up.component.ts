@@ -36,7 +36,6 @@ export class SignUpComponent {
   }
   onSubmit() {
     if (this.signupForm.valid) {
-      // Now, you can use this.signupForm.value, which is an object with properties corresponding to the form controls
       console.log('User submitted:', this.signupForm.value);
     } else {
       console.error('Form is invalid. Please check the fields.');
